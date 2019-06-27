@@ -1,0 +1,93 @@
+# test data
+names = ["Juan Carlos Menendez Garcia",
+         "Godzilla Kaiju",
+         "Mothra Queen",
+         "Marisol De La Paz",
+         "Priscilla Lady-Pants",
+         "King Kong Jr",
+         "D.J. Luchie III",
+         "Michigan J. Frog",
+         "Lola Grey",
+         "Grace Fancy-Woman",
+         "Samwise (Sam) Gamgee",
+         "Frodo Baggins",
+         "Prince Rogers Nelson",
+         "Grey 'Gee' Adams",
+         "Snake K. Pilskin",
+         "Scarlett O'Hara",
+         "Irish McAllister",
+         "Ron MacDonald",
+         "James Hibbert, M.D.",
+         "P.K. Thunder",
+         "Diana Prince",
+         "Bird Indigo",
+         "Goddess Quetzacoatl",
+         "Princess Peach",
+         "Kung Fu",
+         "Li-Yung Peu",
+         "Jesse King",
+         "Mary Ann Hill",
+         "Jose De Maria",
+         "Godzilla Kaiju Sr.",
+         "Mary J Blige",
+         "Vincent Van Gogh",
+         "Ludwig Von Beethoven"
+         ]
+
+# possible suffixes and last name prefixes in American names
+suffixes = ["JR", "JR.", "II", "III", "IV", "V", "VI", "SR", "SR.", "M.D.", "MD", "PH.D", "R.N.", "RN", "B.N.", "BN"]
+lastprefix = ["DA", "DI", "LA", "DE", "EL", "MAC", "MC", "VAN", "VON"]
+cleanednames = []
+
+# to compare with end result
+print(names)
+
+
+# function for parsing the names
+def nameparsing(names):
+    for name in names:
+        nameformat = name.split()
+        if len(nameformat) > 3:
+
+            lastname2 = nameformat[-1]
+            lastname1 = nameformat[-2]
+            if len(nameformat[1]) > 2:
+                middle = nameformat[1]
+            else:
+                middle = " "
+                lastname1 = nameformat[1] + " " + lastname1
+            first1 = nameformat[0]
+
+            newname = lastname1 + " " + lastname2 + " , " + first1 + " " + middle
+            cleanednames.append(newname)
+        elif len(nameformat) == 3:
+            if nameformat[-1].upper() in suffixes or nameformat[1].upper() in lastprefix:
+                lastname3 = nameformat[1] + " " + nameformat[-1]
+                middle = " "
+            elif nameformat[-1].upper() not in suffixes:
+                lastname3 = nameformat[-1]
+                middle = nameformat[1]
+            elif len(nameformat[1]) > 2 or len(nameformat[1]) == 1:
+                lastname3 = nameformat[-1]
+                middle = nameformat[1]
+            else:
+                if "." in nameformat[1]:
+                    lastname3 = nameformat[-1]
+                    middle = nameformat[1]
+                else:
+                    middle = " "
+                    lastname3 = nameformat[1] + " " + nameformat[-1]
+            first1 = nameformat[0]
+            newname = lastname3 + " , " + first1 + " " + middle
+            cleanednames.append(newname)
+        elif len(nameformat) == 2:
+            lastname = nameformat[1]
+            middle = " "
+            firstname = nameformat[0]
+            newname = lastname + " , " + firstname + " " + middle
+            cleanednames.append(newname)
+    return cleanednames
+
+
+winning = nameparsing(names)
+print(winning)
