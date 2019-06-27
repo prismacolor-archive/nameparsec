@@ -34,7 +34,7 @@ names = ["Juan Carlos Menendez Garcia",
 
 # possible suffixes and last name prefixes in American names
 suffixes = ["Jr", "Jr.", "JR", "II", "III", "IV", "V", "VI", "SR", "Sr", "Sr.", "M.D.", "MD", "Ph.D"]
-lastprefix = ["Di", "La", "De", "El", "Mac", "Mc"]
+lastprefix = ["Di", "La", "De", "El", "Mac", "Mc", "Van", "Von"]
 cleanednames = []
 
 # to compare with end result
